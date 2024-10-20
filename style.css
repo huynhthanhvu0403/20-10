@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --clr: rgb(255, 0, 174);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+  overflow-x: hidden; /* Ngăn cuộn ngang */
+}
+
+.container {
+  position: relative;
+  top: 20px; /* Giảm khoảng cách từ trên cùng */
+  height: auto; /* Chiều cao tự động */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cloud {
+  position: relative;
+  width: 80%; /* Giảm chiều rộng cho phù hợp với màn hình nhỏ */
+  max-width: 300px; /* Tối đa chiều rộng */
+  z-index: 100;
+  filter: drop-shadow(0 0 35px var(--clr));
+}
+
+.cloud h2 {
+  position: relative;
+  color: white; /* Màu chữ */
+  font-size: 2em; /* Kích thước chữ */
+  z-index: 1000;
+  font-weight: 400;
+  padding: 0 10px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background: var(--clr);
+  text-align: center; /* Giữa nội dung */
+}
+
+.cloud h2::before {
+  content: "";
+  position: absolute;
+  top: -115px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100px;
+  width: 120%;
+  height: 100px;
+  background: var(--clr);
+}
+
+.cloud h2::after {
+  content: "";
+  position: absolute;
+  top: -150px;
+  left: 25px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--clr);
+  box-shadow: 120px -30px 0 40px var(--clr);
+}
+
+.drop {
+  position: absolute;
+  top: 60px;
+  height: 20px;
+  line-height: 20px;
+  color: var(--clr);
+  transform-origin: bottom;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+      transform: translateY(0) scaleY(0);
+  }
+  10% {
+      transform: translateY(0) scaleY(0.25);
+  }
+  20% {
+      transform: translateY(0) scaleY(1);
+  }
+  70% {
+      transform: translateY(300px) scaleY(1);
+  }
+  100% {
+      transform: translateY(300px) scaleY(0);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .cloud {
+      width: 90%; /* Tăng chiều rộng cho phù hợp với màn hình nhỏ */
+  }
+
+  .cloud h2 {
+      font-size: 1.5em; /* Giảm kích thước chữ */
+      padding: 0 5px; /* Giảm padding */
+  }
+}
